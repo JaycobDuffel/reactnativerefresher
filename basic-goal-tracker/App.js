@@ -14,7 +14,7 @@ export default function App() {
       { text: enteredGoal, id: enteredGoal + currentGoals.length.toString() },
     ]);
     console.log(goals);
-    // toggleAddGoalModal();
+    toggleAddGoalModal();
   };
 
   const deleteGoalHandler = (goalId) => {
