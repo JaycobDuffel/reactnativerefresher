@@ -13,7 +13,8 @@ export default function App() {
       ...currentGoals,
       { text: enteredGoal, id: enteredGoal + currentGoals.length.toString() },
     ]);
-    toggleAddGoalModal();
+    console.log(goals);
+    // toggleAddGoalModal();
   };
 
   const deleteGoalHandler = (goalId) => {
@@ -28,15 +29,17 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-      {!addGoalModalVisible && (
-        <Button
-          title="Add New Goal"
-          color="rebeccapurple"
-          onPress={toggleAddGoalModal}
-        />
-      )}
-      <GoalInput visible={addGoalModalVisible} setVisible={toggleAddGoalModal} onGoalAdd={addGoalHandler} />
-      <View style={styles.goalContainer}>
+      <Button
+        title="Add New Goal"
+        color="rebeccapurple"
+        onPress={toggleAddGoalModal}
+      />
+      <GoalInput
+        visible={addGoalModalVisible}
+        setVisible={toggleAddGoalModal}
+        onGoalAdd={addGoalHandler}
+      />
+      <View>
         <FlatList
           data={goals}
           alwaysBounceVertical={false}
@@ -54,10 +57,8 @@ export default function App() {
 
 const styles = StyleSheet.create({
   appContainer: {
+    flex: 1,
     paddingTop: 50,
     paddingHorizontal: 16,
-  },
-  goalContainer: {
-    flex: 1,
   },
 });
