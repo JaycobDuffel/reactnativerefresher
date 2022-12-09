@@ -13,7 +13,6 @@ export default function App() {
       ...currentGoals,
       { text: enteredGoal, id: enteredGoal + currentGoals.length.toString() },
     ]);
-    console.log(goals);
     toggleAddGoalModal();
   };
 
@@ -41,12 +40,17 @@ export default function App() {
       />
       <View>
         <FlatList
+          style={{ flexGrow: 1, paddingBottom: 30 }}
+          contentContainerStyle={{ paddingBottom: 70 }}
           data={goals}
           alwaysBounceVertical={false}
           keyExtractor={(item, index) => item + index.toString()}
           renderItem={(itemData) => {
             return (
-              <GoalItem item={itemData.item} onDeleteItem={deleteGoalHandler} />
+              <GoalItem
+                item={itemData.item}
+                deleteItemHandler={deleteGoalHandler}
+              />
             );
           }}
         />
@@ -58,6 +62,7 @@ export default function App() {
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
+    backgroundColor: "#311b6b",
     paddingTop: 50,
     paddingHorizontal: 16,
   },

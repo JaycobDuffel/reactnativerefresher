@@ -16,6 +16,9 @@ export default function GoalInput({ onGoalAdd, visible, setVisible }) {
   };
 
   const addGoalHandler = () => {
+    if (enteredGoal.length === 0) {
+      return;
+    }
     onGoalAdd(enteredGoal);
     setEnteredGoal("");
   };
@@ -28,7 +31,7 @@ export default function GoalInput({ onGoalAdd, visible, setVisible }) {
           source={require("../assets/images/goal.png")}
         />
         <TextInput
-          placeholderTextColor="#cccccc"
+          placeholderTextColor="#c5b3ff"
           placeholder="Add a goal!"
           style={styles.textInput}
           onChangeText={goalInputHandler}
@@ -36,7 +39,7 @@ export default function GoalInput({ onGoalAdd, visible, setVisible }) {
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button title="Close" color="red" onPress={setVisible} />
+            <Button title="Close" color="#f31282" onPress={setVisible} />
           </View>
           <View style={styles.button}>
             <Button title="Add Goal" color="#ffd800" onPress={addGoalHandler} />
@@ -71,9 +74,11 @@ const styles = StyleSheet.create({
   },
   textInput: {
     borderWidth: 1,
-    borderColor: "#ffd800",
-    color: "#ffd800",
+    borderColor: "#e4d0ff",
+    borderRadius: 6,
+    backgroundColor: "#e4d0ff",
+    color: "#120438",
     width: "100%",
-    padding: 8,
+    padding: 16,
   },
 });
